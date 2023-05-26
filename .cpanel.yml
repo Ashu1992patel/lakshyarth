@@ -3,22 +3,29 @@ deployment:
   tasks:
     # Other all directory path
     - export DEPLOYPATH=/home/a1630xeb/testing.lakshyarth.com/
+
     # Public directory path
     - export DEPLOYPATH_PUBLIC=/home/a1630xeb/public_html/testing.lakshyarth.com/
+
+    - /bin/cp -R * $DEPLOYPATH
+
     # - /bin/cp public $DEPLOYPATH_PUBLIC
     # - /bin/cp -R * $DEPLOYPATH_HOME
     # - /bin/cp -R public $DEPLOYPATH_PUBLIC
 
-    - /bin/cp -R app $DEPLOYPATH
-    - /bin/cp -R bootstrap $DEPLOYPATH
-    - /bin/cp -R config $DEPLOYPATH
-    - /bin/cp -R database $DEPLOYPATH
-    - /bin/cp -R node_modules $DEPLOYPATH
-    - /bin/cp -R resources $DEPLOYPATH
-    - /bin/cp -R route $DEPLOYPATH
-    - /bin/cp -R storage $DEPLOYPATH
-    - /bin/cp -R tests $DEPLOYPATH
-    - /bin/cp -R vendor $DEPLOYPATH
+    # All Directories
+    # - /bin/cp -R app $DEPLOYPATH
+    # - /bin/cp -R bootstrap $DEPLOYPATH
+    # - /bin/cp -R config $DEPLOYPATH
+    # - /bin/cp -R database $DEPLOYPATH
+    # - /bin/cp -R node_modules $DEPLOYPATH
+    # - /bin/cp -R resources $DEPLOYPATH
+    # - /bin/cp -R route $DEPLOYPATH
+    # - /bin/cp -R storage $DEPLOYPATH
+    # - /bin/cp -R tests $DEPLOYPATH
+    # - /bin/cp -R vendor $DEPLOYPATH
+
+    # All Files
     # - /bin/cp .cpanel.yml $DEPLOYPATH
     # - /bin/cp .editorconfig $DEPLOYPATH
     # - /bin/cp .env $DEPLOYPATH
