@@ -29,7 +29,7 @@ class Farmer extends Model
 
     public function getAadhaarStatusAttribute($value)
     {
-        if (file_exists($this->attributes['aadhaar_card'])) {
+        if (file_exists(url($this->attributes['aadhaar_card']))) {
             return true;
         } else {
             return false;
@@ -38,7 +38,7 @@ class Farmer extends Model
 
     public function getPhotoStatusAttribute($value)
     {
-        if (file_exists($this->attributes['photo'])) {
+        if (file_exists(url($this->attributes['photo']))) {
             return true;
         } else {
             return false;
