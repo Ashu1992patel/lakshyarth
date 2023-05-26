@@ -183,14 +183,14 @@
                     <!-- Left col -->
                     <div class="col-md-12">
                         <!-- USERS LIST -->
-                        <div class="card">
+                        <div class="card card-secondary">
                             <div class="card-header">
                                 <h3 class="card-title">
                                     Recently Registered Farmers
                                 </h3>
 
                                 <div class="card-tools">
-                                    <span class="badge badge-danger">
+                                    <span class="badge badge-primary">
                                         {{ $farmers->count() }} Total Farmers
                                     </span>
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -204,7 +204,7 @@
                             <!-- /.card-header -->
                             <div class="card-body p-0">`
                                 <ul style="display: flex;flex-flow: row wrap;justify-content: space-around;">
-                                    @foreach ($farmers->take(25) as $farmer)
+                                    @foreach ($farmers->take(14) as $farmer)
                                         <li class="text-center m-2 p-2">
                                             @if ($farmer->photo_status)
                                                 <a href="{{ $farmer->photo }}" data-toggle="lightbox"
@@ -248,8 +248,153 @@
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer text-center">
-                                <a href="{{ route('farmers.index') }}">
-                                    View All Users
+                                <a href="{{ route('farmers.index') }}" target="_blank">
+                                    View All Farmers
+                                </a>
+                            </div>
+                            <!-- /.card-footer -->
+                        </div>
+                        <!--/.card -->
+                    </div>
+
+                    <!-- Acquairements -->
+                    <div class="col-md-6 col-lg-6 col-sm-12">
+                        <!-- USERS LIST -->
+                        <div class="card card-secondary">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    Recent <strong>PENDING</strong> RST Entries
+                                </h3>
+
+                                <div class="card-tools">
+                                    <span class="badge badge-warning">
+                                        {{ $acquirements->count() }} Total Acquirements
+                                    </span>
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body p-0">`
+                                <ul style="display: flex;flex-flow: row wrap;justify-content: space-around;">
+                                    @foreach ($acquirements->take(8) as $acquirement)
+                                        <li class="text-center m-2 p-2"
+                                            title="{{ 'RST-' . $acquirement->rst . ' File ' . '(' . $acquirement->farmer->name . '-' . $acquirement->farmer->kisan_id . ')' }}">
+                                            @if ($acquirement->rst_file_status)
+                                                <a href="{{ url($acquirement->rst_file) }}" data-toggle="lightbox"
+                                                    data-title="{{ 'RST-' . $acquirement->rst . ' File ' }}"
+                                                    class="text-center" data-category="2, 4" data-sort="black sample"
+                                                    target="_blank">
+                                                    <img src="{{ url($acquirement->rst_file) }}" class="img-fluid mb-2"
+                                                        alt="{{ 'RST-' . $acquirement->rst . ' File' }}"
+                                                        width="50px" />
+                                                </a>
+                                            @else
+                                                <i class="fas fa-file fa-2x"></i>
+                                            @endif
+
+                                            <div>
+                                                <a class="users-list-name" target="_blank"
+                                                    href="{{ route('acquirements.show', $acquirement->id) }}"
+                                                    target="_blank">
+                                                    {{ $acquirement->rst }}
+                                                </a>
+                                                <span class="users-list-date">
+                                                    {{ $acquirement->created }}
+                                                </span>
+                                            </div>
+                                        </li>
+                                        {{-- <li>
+                                            @if ($farmer->photo_status)
+                                                <img src="{{ $farmer->photo }}" alt="User Image" style="width: 80px;">
+                                            @else
+                                                <i class="fas fa-user fa-2x"></i>
+                                            @endif
+
+                                            <a class="users-list-name" href="#">
+                                                {{ $farmer->name }}
+                                            </a>
+                                            <span class="users-list-date">
+                                                {{ $farmer->dashboard_created }}
+                                            </span>
+                                        </li> --}}
+                                    @endforeach
+                                </ul>
+                                <!-- /.users-list -->
+                            </div>
+                            <!-- /.card-body -->
+                            <div class="card-footer text-center">
+                                <a href="{{ route('acquirements.index') }}">
+                                    View All Acquirements
+                                </a>
+                            </div>
+                            <!-- /.card-footer -->
+                        </div>
+                        <!--/.card -->
+                    </div>
+
+                    <div class="col-md-6 col-lg-6 col-sm-12">
+                        <!-- USERS LIST -->
+                        <div class="card card-secondary">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    Recent <strong>CLEARED</strong> RST Entries
+                                </h3>
+
+                                <div class="card-tools">
+                                    <span class="badge badge-success">
+                                        {{ $acquirements->count() }} Total Acquirements
+                                    </span>
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body p-0">`
+                                <ul style="display: flex;flex-flow: row wrap;justify-content: space-around;">
+                                    @foreach ($acquirementsCleared->take(8) as $acquirement)
+                                        <li class="text-center m-2 p-2"
+                                            title="{{ 'RST-' . $acquirement->rst . ' File ' . '(' . $acquirement->farmer->name . '-' . $acquirement->farmer->kisan_id . ')' }}">
+                                            @if ($acquirement->rst_file_status)
+                                                <a href="{{ url($acquirement->rst_file) }}" data-toggle="lightbox"
+                                                    data-title="{{ 'RST-' . $acquirement->rst . ' File ' }}"
+                                                    class="text-center" data-category="2, 4" data-sort="black sample"
+                                                    target="_blank">
+                                                    <img src="{{ url($acquirement->rst_file) }}" class="img-fluid mb-2"
+                                                        alt="{{ 'RST-' . $acquirement->rst . ' File' }}"
+                                                        width="50px" />
+                                                </a>
+                                            @else
+                                                <i class="fas fa-file fa-2x"></i>
+                                            @endif
+
+                                            <div>
+                                                <a class="users-list-name" target="_blank"
+                                                    href="{{ route('acquirements.show', $acquirement->id) }}"
+                                                    target="_blank">
+                                                    {{ $acquirement->rst }}
+                                                </a>
+                                                <span class="users-list-date">
+                                                    {{ $acquirement->created }}
+                                                </span>
+                                            </div>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                                <!-- /.users-list -->
+                            </div>
+                            <!-- /.card-body -->
+                            <div class="card-footer text-center">
+                                <a href="{{ route('acquirements.index') }}">
+                                    View All Acquirements
                                 </a>
                             </div>
                             <!-- /.card-footer -->

@@ -16,10 +16,7 @@ class AcquirementController extends Controller
      */
     public function index()
     {
-        $acquirements = Acquirement::with('farmer')
-            ->latest()
-            ->get();
-        // dd($acquirements);
+        $acquirements = Acquirement::cleared(0)->with('farmer')->latest()->get();
         // withTrashed()
         return view('backend.acquirements.index', compact('acquirements'));
     }

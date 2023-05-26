@@ -216,10 +216,10 @@
                 <div class="row">
                     <!-- left column -->
                     <div class="col-md-12">
-                        <div class="card card-primary">
+                        <div class="card card-warning">
                             <div class="card-header">
                                 <h3 class="card-title">
-                                    List of related RST entries
+                                    All RST Entries - <strong>NOT CLEARED</strong>
                                 </h3>
 
                                 <div class="card-tools">
@@ -329,6 +329,79 @@
                             <!-- /.card-body -->
                         </div>
                     </div>
+                    <!-- left column -->
+
+                    <!-- left column -->
+                    <div class="col-md-12">
+                        <div class="card card-success">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    All RST Entries -
+                                    <strong>CLEARED</strong>
+                                </h3>
+
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"
+                                        title="Collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="remove"
+                                        title="Remove">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-striped projects" id="example2">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>RST</th>
+                                            <th>Farmer</th>
+                                            <th>Weight</th>
+                                            <th title="Registered On">Registered</th>
+                                            <th title="Updated On">Last Updated</th>
+                                            <th>Vehicle Type</th>
+                                            <th>Vehicle Number</th>
+                                            <th>Cleared?</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($farmer->acquirementsCleared as $key => $acquirement)
+                                            <tr
+                                                title="{{ 'RST-' . $acquirement->rst . ' Comment:-📝 ' . $acquirement->comment }}">
+                                                <td>
+                                                    {{ ++$key }}
+                                                </td>
+                                                <td>
+                                                    <a href="{{ route('acquirements.show', $acquirement->id) }}"
+                                                        target="_blank" class="text-center">
+                                                        {{ $acquirement->rst ?? '-' }}
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    {{ $acquirement->farmer->name }}
+                                                    <span class="badge badge-sm badge-warning">
+                                                        {{ $acquirement->farmer->kisan_id }}
+                                                    </span>
+                                                </td>
+                                                <td>{{ $acquirement->weight }}</td>
+                                                <td>{{ $acquirement->created }} {{ $acquirement->time }}</td>
+                                                <td>{{ $acquirement->updated }}</td>
+                                                <td>{{ $acquirement->vehicle_type ?? 'NA' }}</td>
+                                                <td>{{ $acquirement->vehicle_number ?? 'NA' }}</td>
+                                                <td>
+                                                    {{ $acquirement->is_cleared ? '✔' : '❌' }}
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                    </div>
+                    <!-- left column -->
                 </div>
             </div>
             <!-- /.container-fluid -->

@@ -107,13 +107,24 @@
                 theme: 'bootstrap4'
             })
 
+            // example-1
             $("#example1").DataTable({
                 "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,
                 "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-            $('#example2').DataTable({
+
+            // example-2
+            $("#example2").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0)');
+
+            // example-3
+            $('#example3').DataTable({
                 "paging": true,
                 "lengthChange": false,
                 "searching": false,

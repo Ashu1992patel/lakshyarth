@@ -14,19 +14,12 @@ class Farmer extends Model
     use HasFactory, SoftDeletes;
 
     protected $dates = ['deleted_at'];
-    protected $with = ['acquirements'];
+    protected $with = ['acquirements', 'acquirementsCleared'];
 
     protected $fillable = ['name', 'kisan_id', 'primary_contact', 'secondary_contact', 'village', 'gender', 'comment', 'photo', 'aadhaar_card'];
 
-    // protected $attributes = [
-    //     'kisan_id' => random_int(10000, 200000)
-    // ];
 
-    // public function setKisanIdAttribute($value)
-    // {
-    //     $this->attributes['kisan_id'] = random_int(10000, 200000);
-    // }
-
+    // All Accessors
     public function getAadhaarStatusAttribute($value)
     {
         if (file_exists($this->attributes['aadhaar_card'])) {
@@ -76,6 +69,11 @@ class Farmer extends Model
 
     public function acquirements(): HasMany
     {
-        return $this->hasMany(Acquirement::class, 'farmer_id');
+        return $this->hasMany(Acquirement::class, 'farmer_id')->cleared(0);
+    }
+
+    public function acquirementsCleared(): HasMany
+    {
+        return $this->hasMany(Acquirement::class, 'farmer_id')->cleared(1);
     }
 }

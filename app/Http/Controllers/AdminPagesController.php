@@ -13,7 +13,8 @@ class AdminPagesController extends Controller
     function dashboard()
     {
         $farmers = Farmer::latest()->get();
-        $acquirements = Acquirement::latest()->get();
-        return view('dashboard', compact('farmers', 'acquirements'));
+        $acquirements = Acquirement::cleared(0)->latest()->get();
+        $acquirementsCleared = Acquirement::cleared(1)->latest()->get();
+        return view('dashboard', compact('farmers', 'acquirements', 'acquirementsCleared'));
     }
 }

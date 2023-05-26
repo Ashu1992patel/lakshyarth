@@ -17,9 +17,13 @@ class Acquirement extends Model
 
     protected $fillable = ['user_id', 'farmer_id', 'vehicle_type', 'vehicle_number', 'rst', 'weight', 'is_cleared', 'is_approved', 'comment', 'rst_file'];
 
-    // protected $with = ['farmer'];
+    // All Queries
+    public function scopeCleared($query, $value)
+    {
+        return $query->where('is_cleared', $value);
+    }
 
-    // rst_file_status
+    // All Accessors - rst_file_status
     public function getRSTFileStatusAttribute($value)
     {
         if (file_exists($this->attributes['rst_file'])) {
