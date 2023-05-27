@@ -367,7 +367,7 @@
 
                                 <div class="card-tools">
                                     <span class="badge badge-success">
-                                        {{ $acquirements->count() }} Total Acquirements
+                                        {{ $acquirementsCleared->count() }} Total Acquirements
                                     </span>
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                         <i class="fas fa-minus"></i>
