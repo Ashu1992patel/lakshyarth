@@ -194,6 +194,65 @@
             toastr.info('This sample position', 'Toast Position')
         });
     </script>
+    
+    <script>
+        $(document).ready(function() {
+            document.getElementById('rst_select_all').click();
+        });
+
+        function getPercentage(percentage, totalWeight) {
+            let calculated_weight = document.getElementById('calculated_weight')
+            calculated_weight.value = parseFloat(((totalWeight * (100 - percentage)) / 100));
+
+            let deducted_weight = document.getElementById('deducted_weight')
+            deducted_weight.value = parseFloat(((totalWeight * (percentage)) / 100));
+        }
+
+        function checkAll(source) {
+            checkboxes = document.getElementsByName('hisaab');
+            for (var i = 0, n = checkboxes.length; i < n; i++) {
+                checkboxes[i].checked = source.checked;
+            }
+            getChecked();
+        }
+
+        // Check all the elements
+        function getChecked() {
+            var checkedValue = [];
+            var total_weight = 0;
+            var calculated_weight = 0;
+            var deducted_weight = 0;
+            var percentage = parseFloat(document.getElementById('weight_percentage').value);
+
+            var inputElements = document.getElementsByClassName('rst_checkbox');
+            for (var i = 0; inputElements[i]; ++i) {
+                if (inputElements[i].checked) {
+                    checkedValue.push(inputElements[i].value);
+                    // Total weight calculation
+                    total_weight += parseFloat(inputElements[i].getAttribute('data-weight'));
+                }
+            }
+            // After Deduction of % Weight
+            calculated_weight = ((total_weight * (100 - percentage)) / 100);
+            // How much wait is deducted after % pertage of calculation
+            deducted_weight = ((total_weight * (percentage)) / 100);
+
+            // Setting elements values
+            document.getElementById('total_weight').value = parseFloat(total_weight);
+            document.getElementById('calculated_weight').value = parseFloat(calculated_weight);
+            document.getElementById('deducted_weight').value = parseFloat(deducted_weight);
+            // putting all selected values to the input box
+            document.getElementById('acquirement_ids').value = checkedValue;
+
+            // Checking for select All & deselect if anyone is not selected in the list
+            if (inputElements.length == checkedValue.length) {
+                document.getElementById('rst_select_all').checked = true;
+            } else {
+                document.getElementById('rst_select_all').checked = false;
+            }
+        }
+    </script>
+
     @if ($errors->any())
         @foreach ($errors->all() as $error)
             <script>

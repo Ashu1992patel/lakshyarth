@@ -3,6 +3,7 @@
 use App\Http\Controllers\AcquirementController;
 use App\Http\Controllers\AdminPagesController;
 use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\FarmerAcquirementController;
 use App\Http\Controllers\FarmerController;
 use App\Http\Controllers\GuestController;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +35,8 @@ Route::middleware(['auth'])->group(function () {
     // Dahsboard Route
     Route::get("dashboard", [AdminPagesController::class, "dashboard"])->name("dashboard");
     // Farmers CRUD Route
+    Route::get('farmer/{id}/records', [FarmerAcquirementController::class, 'records'])->name("farmers.records");
+    Route::post('farmer/{id}/records', [FarmerAcquirementController::class, 'recordsStore'])->name("farmers.records");
     Route::resource('farmers', FarmerController::class);
     // Acquirement CRUD Route
     Route::resource('acquirements', AcquirementController::class);

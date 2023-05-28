@@ -27,7 +27,7 @@
                 <div class="row">
                     <!-- left column -->
                     <div class="col-md-12">
-                        <div class="card">
+                        <div class="card card-primary">
                             <div class="card-header">
                                 <h3 class="card-title">All the farmers listed below:</h3>
                                 <div class="card-tools">
@@ -149,18 +149,31 @@
 
                                                 <td class="text-right py-0 align-middle">
                                                     <div class="btn-group btn-group-sm">
+                                                        @if ($farmer->acquirements->count() > 0)
+                                                            <a href="{{ route('farmers.records', $farmer->id) }}"
+                                                                target="_blank" class="btn btn-secondary"
+                                                                title="Clear RST Entries">
+                                                                <i class="fas fa-history"></i>
+                                                            </a>
+                                                        @endif
+
                                                         <a href="{{ route('farmers.show', $farmer->id) }}" target="_blank"
-                                                            class="btn btn-primary" title="Show RST Details">
+                                                            class="btn btn-success"
+                                                            title="Show Farmers & Related RST Detail">
                                                             <i class="fas fa-eye"></i>
                                                         </a>
+
                                                         <a href="{{ route('farmers.edit', $farmer->id) }}" target="_blank"
-                                                            class="btn btn-info" title="Edit RST Record">
+                                                            class="btn btn-info" title="Edit Farmers Details">
                                                             <i class="fas fa-pen"></i>
                                                         </a>
-                                                        <a class="btn btn-warning"
+
+                                                        <a class="btn btn-danger"
+                                                            title="Remove farmer records from database."
                                                             onclick="handleDelete({{ $farmer->kisan_id }})">
                                                             <i class="fas fa-trash"></i>
                                                         </a>
+
                                                         <form action="{{ route('farmers.destroy', $farmer->id) }}"
                                                             method="post">
                                                             @csrf

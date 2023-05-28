@@ -24,8 +24,8 @@ class CreateFarmersTable extends Migration
             $table->string("comment")->nullable();
             $table->string("photo")->comment('Kisan picture will be uploaded')->nullable();
             $table->string("aadhaar_card")->comment('Aadhaar card shoudl be uploaded')->nullable();
-            $table->timestamps();
             $table->softDeletes();
+            $table->timestamps();
         });
     }
 

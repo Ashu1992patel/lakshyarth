@@ -19,7 +19,8 @@ class CreateCustomerQueriesTable extends Migration
             $table->string('name', 20);
             $table->string('email', 20);
             $table->string('contact', 20);
-            $table->longText('message', 1000);
+            $table->longText('message');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
