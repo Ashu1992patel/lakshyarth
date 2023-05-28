@@ -2,6 +2,9 @@
 
 @section('title', "Farmers's Detail ")
 @section('content')
+    @php
+        $count = 1;
+    @endphp
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -27,10 +30,11 @@
         </section>
 
         <!-- Main content -->
+
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <!-- left column -->
+                    <!-- Profile details -->
                     <div class="col-md-8">
                         <div class="card card-primary">
                             <div class="card-header">
@@ -134,6 +138,7 @@
                         </div>
                     </div>
 
+                    <!-- Profile Photo & Aadhaar Card -->
                     <div class="col-md-4" title="{{ $farmer->name }} - {{ $farmer->kisan_id }}">
                         <div class="row">
                             <div class="col-sm-12 col-md-12">
@@ -214,42 +219,140 @@
                 <!-- /.row -->
 
                 <div class="row">
-                    <!-- left column -->
-                    <div class="col-md-12">
-                        <div class="card card-warning">
-                            <div class="card-header">
-                                <h3 class="card-title">
-                                    All RST Entries - <strong>NOT CLEARED</strong>
-                                </h3>
+                    <!-- Calculation Form - Starts -->
+                    @if ($farmer->acquirements->count() > 0)
+                        <div class="col-md-12">
+                            <div class="card card-warning">
+                                <div class="card-header">
+                                    <h3 class="card-title">
+                                        RST Calculation & Settlement Form
+                                    </h3>
 
-                                <div class="card-tools">
-                                    @if ($farmer->acquirements->count() > 0)
-                                        <a href="{{ route('farmers.records', $farmer->id) }}" target="_blank"
-                                            class="badge badge-success" title="Clear RST Entries">
-                                            <i class="fas fa-history"></i> Clear RST Entires
-                                        </a>
-                                    @endif
-                                    {{-- <span class="badge badge-primary">
-                                        29 Total Farmers
-                                    </span> --}}
-
-                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"
-                                        title="Collapse">
-                                        <i class="fas fa-minus"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-tool" data-card-widget="remove"
-                                        title="Remove">
-                                        <i class="fas fa-times"></i>
-                                    </button>
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse"
+                                            title="Collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-tool" data-card-widget="remove"
+                                            title="Remove">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
                                 </div>
+                                <div class="card-body">
+                                    <table class="table table-striped projects" style="font-size: .9rem">
+                                        <tbody>
+                                            <form action="{{ route('farmers.records', $farmer->id) }}" method="post">
+                                                @csrf
+                                                @method('POST')
+                                                <input type="hidden" name="acquirement_ids" id="acquirement_ids"
+                                                    class="form-control">
+                                                <tr>
+                                                    <td>
+                                                        <div class="custom-control custom-checkbox"
+                                                            title="Click the checkbox to select all the RST entires to clear.">
+
+                                                            <input type="checkbox" onchange="checkAll(this)"
+                                                                id="rst_select_all" class="custom-control-input"
+                                                                value="" />
+                                                            <label for="rst_select_all" class="custom-control-label"
+                                                                title="सबका चयन करें">
+                                                                SELECT ALL
+                                                            </label>
+                                                        </div>
+                                                    </td>
+
+                                                    <th colspan="2">
+                                                        {{-- {{ $farmer->acquirements->sum('weight') }} --}}
+                                                        <input type="number" class="form-control" value="0"
+                                                            readonly id="total_weight" name="total_weight" />
+                                                        <label for="total_weight" title="Total weight">
+                                                            <small class="error">कुल वजन।</small>
+                                                        </label>
+                                                    </th>
+                                                    <th>
+                                                        <input type="number" id="weight_percentage"
+                                                            name="weight_percentage" placeholder="2%"
+                                                            class="form-control bg-secondary" value="2" autofocus
+                                                            required
+                                                            onchange="getPercentage(this.value, {{ $farmer->acquirements->sum('weight') }})">
+                                                        <label for="weight_percentage" title="% Deduction.">
+                                                            <small class="error">% कटौती।</small>
+                                                        </label>
+                                                    </th>
+                                                    <th colspan="2">
+                                                        {{-- {{ ($farmer->acquirements->sum('weight') * 98) / 100 }} --}}
+                                                        <input type="number" step=0.01 class="form-control"
+                                                            id="calculated_weight" name="calculated_weight"
+                                                            value="0" readonly>
+                                                        <label for="calculated_weight" title="Weight after deduction.">
+                                                            <small class="error">कटौती के बाद वजन।</small>
+                                                        </label>
+                                                    </th>
+                                                    <th>
+                                                        {{-- {{ ($farmer->acquirements->sum('weight') * 2) / 100 }} --}}
+                                                        <input type="number" class="form-control" id="deducted_weight"
+                                                            name="calculated_weight" value="0" readonly />
+                                                        <label for="calculated_weight"
+                                                            title="Weight deducted of total weight.">
+                                                            <small class="error">
+                                                                कुल वजन से घटाया गया वजन।
+                                                            </small>
+                                                        </label>
+                                                    </th>
+                                                    <th>
+                                                        <button type="submit" class="btn btn-info"
+                                                            title="सभी चयनित का निपटारा करें">
+                                                            Submit
+                                                        </button>
+                                                    </th>
+                                                </tr>
+                                            </form>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <!-- /.card-body -->
                             </div>
-                            <div class="card-body">
-                                @if ($farmer->acquirements->count() > 0)
-                                    <table class="table table-striped projects" id="example1">
+                        </div>
+                    @endif
+                    <!-- Calculation Form - Ends -->
+
+                    <!-- NOT CLEARED RSTs- Starts -->
+                    @if ($farmer->acquirements->count() > 0)
+                        <div class="col-md-12">
+                            <div class="card card-secondary">
+                                <div class="card-header">
+                                    <h3 class="card-title">
+                                        All RST Entries - <strong>NOT CLEARED</strong>
+                                    </h3>
+
+                                    <div class="card-tools">
+                                        @if ($farmer->acquirements->count() > 0)
+                                            <a href="{{ route('farmers.records', $farmer->id) }}" target="_blank"
+                                                title="Clear RST Entries">
+                                                <span class="badge badge-light">
+                                                    <i class="fas fa-history"></i>
+                                                </span>
+                                            </a>
+                                        @endif
+
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse"
+                                            title="Collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-tool" data-card-widget="remove"
+                                            title="Remove">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table table-striped projects" id="example{{ ++$count }}">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                {{-- <th>Select</th> --}}
+                                                <th>Select</th>
                                                 <th>RST</th>
                                                 <th>Farmer</th>
                                                 <th>Weight</th>
@@ -267,14 +370,17 @@
                                                     <td>
                                                         {{ ++$key }}
                                                     </td>
-                                                    {{-- <td>
+                                                    <td>
                                                         <div class="custom-control custom-checkbox">
-                                                            <input class="custom-control-input" type="checkbox"
-                                                                id="{{ $acquirement->rst }}" name="hisaab">
+                                                            <input class="custom-control-input rst_checkbox"
+                                                                type="checkbox" onchange="getChecked();"
+                                                                id="{{ $acquirement->rst }}" name="hisaab"
+                                                                value="{{ $acquirement->id }}"
+                                                                data-weight="{{ $acquirement->weight }}">
                                                             <label for="{{ $acquirement->rst }}"
                                                                 class="custom-control-label"></label>
                                                         </div>
-                                                    </td> --}}
+                                                    </td>
                                                     <td>
                                                         <a href="{{ route('acquirements.show', $acquirement->id) }}"
                                                             target="_blank" class="text-center">
@@ -298,13 +404,12 @@
                                                 </tr>
                                             @endforeach
                                         </tbody>
-                                        <tfoot>
+                                        {{-- <tfoot>
                                             <tr>
                                                 <th></th>
                                                 <th></th>
                                                 <th></th>
                                                 <th colspan="2">
-                                                    {{-- {{ $farmer->acquirements->sum('weight') }} --}}
                                                     <input type="number" class="form-control"
                                                         value="{{ $farmer->acquirements->sum('weight') }}" readonly
                                                         id="total_weight" name="total_weight" />
@@ -322,7 +427,6 @@
                                                     </label>
                                                 </th>
                                                 <th colspan="2">
-                                                    {{-- {{ ($farmer->acquirements->sum('weight') * 98) / 100 }} --}}
                                                     <input type="number" step=0.01 class="form-control"
                                                         id="calculated_weight" name="calculated_weight"
                                                         value="{{ ($farmer->acquirements->sum('weight') * (100 - 2)) / 100 }}"
@@ -332,7 +436,6 @@
                                                     </label>
                                                 </th>
                                                 <th>
-                                                    {{-- {{ ($farmer->acquirements->sum('weight') * 2) / 100 }} --}}
                                                     <input type="number" class="form-control" id="deducted_weight"
                                                         name="calculated_weight"
                                                         value="{{ ($farmer->acquirements->sum('weight') * 2) / 100 }}"
@@ -345,41 +448,127 @@
                                                     </label>
                                                 </th>
                                             </tr>
-                                        </tfoot>
+                                        </tfoot> --}}
                                     </table>
-                                @else
-                                    <p class="text-center">No Records Available</p>
-                                @endif
+                                    <!--  <p class="text-center">No Records Available</p> -->
+                                </div>
+                                <!-- /.card-body -->
                             </div>
-                            <!-- /.card-body -->
                         </div>
-                    </div>
-                    <!-- left column -->
+                    @endif
+                    <!-- NOT CLEARED RSTs- Ends -->
 
-                    <!-- left column -->
+                    <!-- CLEARED RSTs- Starts - Group By Transaction ID -->
+                    @if ($farmer->settlements->groupBy('transaction_id')->count() > 0)
+                        @foreach ($farmer->settlements->groupBy('transaction_id') as $tkey => $transactions)
+                            <div class="col-md-12">
+                                <div class="card card-success">
+                                    <div class="card-header">
+                                        <h3 class="card-title">
+                                            TRANSACTION ID:
+                                            <span class="badge badge-secondary">{{ $tkey }}</span>
+                                            <small>(CLEARED)</small>
+                                        </h3>
 
-                    <div class="col-md-12">
-                        <div class="card card-success">
-                            <div class="card-header">
-                                <h3 class="card-title">
-                                    All RST Entries -
-                                    <strong>CLEARED</strong>
-                                </h3>
-
-                                <div class="card-tools">
-                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"
-                                        title="Collapse">
-                                        <i class="fas fa-minus"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-tool" data-card-widget="remove"
-                                        title="Remove">
-                                        <i class="fas fa-times"></i>
-                                    </button>
+                                        <div class="card-tools">
+                                            <button type="button" class="btn btn-tool" data-card-widget="collapse"
+                                                title="Collapse">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-tool" data-card-widget="remove"
+                                                title="Remove">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        @if ($transactions->count() > 0)
+                                            <table class="table table-striped projects" id="example{{ ++$count }}">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>RST</th>
+                                                        <th>Farmer</th>
+                                                        <th>Weight</th>
+                                                        <th title="Registered On">Registered</th>
+                                                        {{-- <th title="Updated On">Last Updated</th> --}}
+                                                        <th>Vehicle Type</th>
+                                                        <th>Vehicle Number</th>
+                                                        <th>Cleared?</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($transactions as $key => $transaction)
+                                                        <tr>
+                                                            <td>
+                                                                {{ ++$key }}
+                                                            </td>
+                                                            <td>
+                                                                <a href="{{ route('acquirements.show', $transaction->acquirement->id) }}"
+                                                                    target="_blank" class="text-center">
+                                                                    {{ $transaction->acquirement->rst ?? '-' }}
+                                                                </a>
+                                                            </td>
+                                                            <td>
+                                                                {{ $transaction->farmer->name }}
+                                                                <span class="badge badge-sm badge-warning">
+                                                                    {{ $transaction->farmer->kisan_id }}
+                                                                </span>
+                                                            </td>
+                                                            <td>
+                                                                {{ $transaction->weight }}
+                                                            </td>
+                                                            <td>
+                                                                {{ $transaction->created }}
+                                                            </td>
+                                                            {{-- <td>{{ $transaction->updated }}</td> --}}
+                                                            <td>
+                                                                {{ $transaction->acquirement->vehicle_type ?? 'NA' }}
+                                                            </td>
+                                                            <td>
+                                                                {{ $transaction->acquirement->vehicle_number ?? 'NA' }}
+                                                            </td>
+                                                            <td>
+                                                                {{ $transaction->acquirement->is_cleared ? '✔' : '❌' }}
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        @else
+                                            <p class="text-center">No Records Available</p>
+                                        @endif
+                                    </div>
+                                    <!-- /.card-body -->
                                 </div>
                             </div>
-                            <div class="card-body">
-                                @if ($farmer->acquirementsCleared->count() > 0)
-                                    <table class="table table-striped projects" id="example2">
+                        @endforeach
+                    @endif
+                    <!-- CLEARED RSTs- Ends - Group By Transaction ID -->
+
+                    <!-- All CLEARED RSTs - Starts -->
+                    @if ($farmer->acquirementsCleared->count() > 0)
+                        <div class="col-md-12">
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title">
+                                        All RST Entries -
+                                        <strong>CLEARED</strong>
+                                    </h3>
+
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse"
+                                            title="Collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-tool" data-card-widget="remove"
+                                            title="Remove">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table table-striped projects" id="example{{ ++$count }}">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -424,14 +613,12 @@
                                             @endforeach
                                         </tbody>
                                     </table>
-                                @else
-                                    <p class="text-center">No Records Available</p>
-                                @endif
+                                </div>
+                                <!-- /.card-body -->
                             </div>
-                            <!-- /.card-body -->
                         </div>
-                    </div>
-                    <!-- left column -->
+                    @endif
+                    <!-- All CLEARED RSTs - Ends -->
                 </div>
             </div>
             <!-- /.container-fluid -->

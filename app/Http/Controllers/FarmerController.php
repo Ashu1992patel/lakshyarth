@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\FarmerRequest;
 use App\Models\Farmer;
+use App\Models\RstSettlement;
 use Illuminate\Http\Request;
 
 class FarmerController extends Controller
@@ -76,6 +77,7 @@ class FarmerController extends Controller
      */
     public function show(Farmer $farmer)
     {
+        $rst = RstSettlement::get();
         return view('backend.farmers.show', compact('farmer'));
     }
 

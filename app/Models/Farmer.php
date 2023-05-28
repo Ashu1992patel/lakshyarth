@@ -14,7 +14,7 @@ class Farmer extends Model
     use HasFactory, SoftDeletes;
 
     protected $dates = ['deleted_at'];
-    protected $with = ['acquirements', 'acquirementsCleared'];
+    protected $with = ['acquirements', 'acquirementsCleared', 'settlements'];
 
     protected $fillable = ['name', 'kisan_id', 'primary_contact', 'secondary_contact', 'village', 'gender', 'comment', 'photo', 'aadhaar_card'];
 
@@ -75,5 +75,10 @@ class Farmer extends Model
     public function acquirementsCleared(): HasMany
     {
         return $this->hasMany(Acquirement::class, 'farmer_id')->cleared(1);
+    }
+
+    public function settlements(): HasMany
+    {
+        return $this->hasMany(RstSettlement::class, 'farmer_id')->orderBy('created_at', 'desc');
     }
 }
