@@ -22,7 +22,8 @@
                     @csrf
                     <button href="route('logout')"
                         onclick="event.preventDefault();
-                    this.closest('form').submit();" id="logout">{{ __('Log Out') }}</button>
+                    this.closest('form').submit();"
+                        id="logout">{{ __('Log Out') }}</button>
 
                 </form>
             </div>
@@ -53,7 +54,6 @@
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
-                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
 
@@ -61,7 +61,7 @@
 
                 <li class="nav-item {{ request()->is('farmers*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-user"></i>
+                        <i class="nav-icon fas fa-users"></i>
                         <p>
                             Farmers
                             <i class="fas fa-angle-left right"></i>
@@ -86,7 +86,7 @@
                 </li>
                 <li class="nav-item {{ request()->is('acquirements*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-user"></i>
+                        <i class="nav-icon fas fa-list-ol"></i>
                         <p>
                             Acquirements
                             <i class="fas fa-angle-left right"></i>
