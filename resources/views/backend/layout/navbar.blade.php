@@ -4,8 +4,8 @@
      <ul class="navbar-nav">
          <li class="nav-item">
              <a class="nav-link" data-widget="pushmenu" href="#" role="button">
-                <i class="fas fa-bars"></i>
-            </a>
+                 <i class="fas fa-bars"></i>
+             </a>
          </li>
          <li class="nav-item d-none d-sm-inline-block">
              <a href="{{ route('dashboard') }}" class="nav-link">Dashboard</a>
@@ -17,6 +17,14 @@
          <li class="nav-item">
              <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                  <i class="fas fa-expand-arrows-alt"></i>
+             </a>
+         </li>
+
+         <li class="nav-item">
+             <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="true"
+                 onclick="document.getElementById('logout').click()">
+                 <i class="fas fa-sign-out"></i>
+                 <span class="text-warning">Logout</span>
              </a>
          </li>
      </ul>

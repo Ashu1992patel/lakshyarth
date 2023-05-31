@@ -91,9 +91,12 @@
                     </ul>
                 </div>
                 <div class="col-md-3">
-                    <form class="bottom_form">
+                    <form class="bottom_form" action="{{ route('news_letters.subscribe') }}" method="post">
+                        @csrf
+                        @method('post')
                         <h3>Newsletter</h3>
-                        <input class="enter" placeholder="Enter your email" type="text" name="Enter your email">
+                        <input class="enter" placeholder="Enter your email" type="email" name="email">
+                        <hr>
                         <button class="sub_btn">
                             subscribe
                         </button>

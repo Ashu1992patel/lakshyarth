@@ -2,8 +2,9 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{ route('dashboard') }}" class="brand-link">
-        <img src="{{ url('backend/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
-            class="brand-image img-circle elevation-3" style="opacity: .8">
+        <img src="{{ url('logo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        {{-- <img src="{{ url('backend/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
+            class="brand-image img-circle elevation-3" style="opacity: .8"> --}}
         <span class="brand-text font-weight-light">Lakshyarth</span>
     </a>
 
@@ -11,20 +12,20 @@
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
+            {{-- <div class="image">
                 <img src="{{ url('backend/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
                     alt="User Image">
-            </div>
+            </div> --}}
             <div class="info">
-                <a href="#" class="d-block">{{ ucwords(Auth::user()->name) }}</a>
-
+                <a href="javascrip:void(0)" class="d-block">
+                    {{ ucwords(Auth::user()->name) }}
+                </a>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <button href="route('logout')"
+                    <button href="route('logout')" class="badge badge-sm badge-warning"
                         onclick="event.preventDefault();
                     this.closest('form').submit();"
                         id="logout">{{ __('Log Out') }}</button>
-
                 </form>
             </div>
         </div>
@@ -169,15 +170,15 @@
                     </ul>
                 </li> --}}
 
-                {{-- <li class="nav-header">EXAMPLES</li> --}}
-                {{-- <li class="nav-item">
-                    <a href="pages/gallery.html" class="nav-link">
+                <li class="nav-header">SETTINGS</li>
+                <li class="nav-item">
+                    <a href="{{ route('news_letters.index') }}" class="nav-link">
                         <i class="nav-icon far fa-image"></i>
                         <p>
-                            Gallery
+                            News Letters
                         </p>
                     </a>
-                </li> --}}
+                </li>
 
                 {{-- <li class="nav-item">
                     <a href="#" class="nav-link">

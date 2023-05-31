@@ -7,12 +7,9 @@
                     <div class="full">
                         <div class="center-desk">
                             <div class="logo">
-                                <a href="{{ route('home') }}">
-                                    {{-- <img src="frontend/images/logo.png" alt="#" /> --}}
-                                    <h1 style="color: orange">
-                                        <strong>LAKSHYARTH</strong>
-                                    </h1>
-                                </a>
+                                <img src="logo.png" alt="#" width="60"
+                                    style="max-width: 80%;
+                                height: auto; " />
                             </div>
                         </div>
                     </div>

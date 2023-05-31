@@ -6,6 +6,8 @@ use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\FarmerAcquirementController;
 use App\Http\Controllers\FarmerController;
 use App\Http\Controllers\GuestController;
+use App\Http\Controllers\NewsLetterController;
+use App\Models\NewsLetter;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +31,8 @@ Route::get('products', [GuestController::class, 'products'])->name("products");
 Route::get('blogs', [GuestController::class, 'blogs'])->name("blogs");
 Route::get('contact', [GuestController::class, 'contact'])->name("contact");
 Route::post('contact', [ContactUsController::class, 'store'])->name("contact");
+Route::post('news_letters.subscribe', [GuestController::class, 'subscribe'])->name("news_letters.subscribe");
+
 
 // Route After Authentication i.e LOGIN
 Route::middleware(['auth'])->group(function () {
@@ -40,6 +44,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('farmers', FarmerController::class);
     // Acquirement CRUD Route
     Route::resource('acquirements', AcquirementController::class);
+
+    Route::resource('news_letters', NewsLetterController::class);
 });
 
 require __DIR__ . '/auth.php';

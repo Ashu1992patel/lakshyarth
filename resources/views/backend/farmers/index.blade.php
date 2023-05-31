@@ -283,4 +283,11 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+
+    <script>
+        function handleDelete(kisan_id) {
+            let item = document.getElementById(kisan_id);
+            item.click();
+        }
+    </script>
 @endsection
