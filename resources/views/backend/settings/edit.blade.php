@@ -271,10 +271,10 @@
                                     </div>
                                     <div class="card-body">
                                         @if ($settings->banner_image)
-                                            <a href="{{ url('frontend/' . $settings->banner_image) }}"
+                                            <a href="{{ url($settings->banner_image) }}"
                                                 data-toggle="lightbox" data-title="Banner Image 1 Preview"
                                                 class="text-center" data-category="2, 4" data-sort="black sample">
-                                                <img src="{{ url('frontend/', $settings->banner_image) }}"
+                                                <img src="{{ url($settings->banner_image) }}"
                                                     class="elevation-2 photo" id="banner_image"
                                                     alt="Banner Image 1 Preview" width="400px" />
                                             </a>
