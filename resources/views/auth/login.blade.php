@@ -2,9 +2,12 @@
 @section('page-content')
     <div class="login-box">
         <!-- /.login-logo -->
-        <div class="card card-outline card-primary">
+        <div class="card card-outline card-success">
             <div class="card-header text-center">
-                <a href="{{ route('login') }}" class="h1"><b>Lakshyarth</b></a>
+                <a href="{{ route('login') }}" class="h1">
+                    <img src="{{ url('logo.png') }}" alt="" width="80">
+                    {{-- <b>Lakshyarth</b> --}}
+                </a>
             </div>
             <div class="card-body">
                 <p class="login-box-msg">Sign in to start your session</p>

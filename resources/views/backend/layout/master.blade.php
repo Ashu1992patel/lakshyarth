@@ -112,7 +112,56 @@
                     "responsive": true,
                     "lengthChange": false,
                     "autoWidth": false,
-                    "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+                    "buttons": [
+                        // "copy",
+                        // "csv",
+                        // "excel",
+                        // "pdf",
+                        // "print",
+                        // "colvis",
+                        {
+                            extend: 'copy',
+                            footer: true,
+                            exportOptions: {
+                                columns: ':visible'
+                            }
+                        },
+                        {
+                            extend: 'csv',
+                            footer: true,
+                            exportOptions: {
+                                columns: ':visible'
+                            }
+                        },
+                        {
+                            extend: 'excel',
+                            footer: true,
+                            exportOptions: {
+                                columns: ':visible'
+                            }
+                        },
+                        {
+                            extend: 'pdf',
+                            footer: true,
+                            exportOptions: {
+                                columns: ':visible'
+                            }
+                        },
+                        {
+                            extend: 'print',
+                            footer: true,
+                            exportOptions: {
+                                columns: ':visible'
+                            }
+                        },
+                        {
+                            extend: 'colvis',
+                            footer: true,
+                            exportOptions: {
+                                columns: ':visible'
+                            }
+                        }
+                    ]
                 }).buttons().container().appendTo(`#example${i}_wrapper .col-md-6:eq(0)`);
             }
 

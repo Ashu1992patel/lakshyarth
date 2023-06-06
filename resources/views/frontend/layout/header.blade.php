@@ -7,9 +7,8 @@
                     <div class="full">
                         <div class="center-desk">
                             <div class="logo">
-                                <img src="logo.png" alt="#" width="60"
-                                    style="max-width: 80%;
-                                height: auto; " />
+                                <img src="{{ url('logo.png') }}" alt="#" width="60"
+                                    style="max-width: 80%;height: auto; " />
                             </div>
                         </div>
                     </div>

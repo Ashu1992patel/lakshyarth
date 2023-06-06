@@ -494,11 +494,17 @@
                                                         {{-- <th title="Updated On">Last Updated</th> --}}
                                                         <th>Vehicle Type</th>
                                                         <th>Vehicle Number</th>
-                                                        <th>Cleared?</th>
+                                                        {{-- <th>Cleared?</th> --}}
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    @php
+                                                        $weight = 0;
+                                                    @endphp
                                                     @foreach ($transactions as $key => $transaction)
+                                                        @php
+                                                            $weight += $transaction->calculated_weight;
+                                                        @endphp
                                                         <tr>
                                                             <td>
                                                                 {{ ++$key }}
@@ -515,8 +521,9 @@
                                                                     {{ $transaction->farmer->kisan_id }}
                                                                 </span>
                                                             </td>
-                                                            <td>
-                                                                {{ $transaction->weight }}
+                                                            <td
+                                                                title="{{ $transaction->deducted_weight ?? '-' }} ({{ $transaction->percentage . '%' ?? '-' }} of {{ $transaction->acquirement->weight ?? '-' }})">
+                                                                {{ $transaction->calculated_weight }}
                                                             </td>
                                                             <td>
                                                                 {{ $transaction->created }}
@@ -528,12 +535,25 @@
                                                             <td>
                                                                 {{ $transaction->acquirement->vehicle_number ?? 'NA' }}
                                                             </td>
-                                                            <td>
+                                                            {{-- <td>
                                                                 {{ $transaction->acquirement->is_cleared ? '✔' : '❌' }}
-                                                            </td>
+                                                            </td> --}}
                                                         </tr>
                                                     @endforeach
                                                 </tbody>
+
+                                                <tfoot>
+                                                    <tr>
+                                                        <td colspan="2"></td>
+                                                        <th>
+                                                            Total Weight:
+                                                        </th>
+                                                        <th>
+                                                            {{ $weight ?? '-' }}
+                                                        </th>
+                                                        <th colspan="3"></th>
+                                                    </tr>
+                                                </tfoot>
                                             </table>
                                         @else
                                             <p class="text-center">No Records Available</p>
@@ -579,7 +599,7 @@
                                                 <th title="Updated On">Last Updated</th>
                                                 <th>Vehicle Type</th>
                                                 <th>Vehicle Number</th>
-                                                <th>Cleared?</th>
+                                                {{-- <th>Cleared?</th> --}}
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -606,9 +626,9 @@
                                                     <td>{{ $acquirement->updated }}</td>
                                                     <td>{{ $acquirement->vehicle_type ?? 'NA' }}</td>
                                                     <td>{{ $acquirement->vehicle_number ?? 'NA' }}</td>
-                                                    <td>
+                                                    {{-- <td>
                                                         {{ $acquirement->is_cleared ? '✔' : '❌' }}
-                                                    </td>
+                                                    </td> --}}
                                                 </tr>
                                             @endforeach
                                         </tbody>
