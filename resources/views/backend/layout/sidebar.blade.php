@@ -1,11 +1,13 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="{{ route('dashboard') }}" class="brand-link">
-        <img src="{{ url('logo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        {{-- <img src="{{ url('backend/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
-            class="brand-image img-circle elevation-3" style="opacity: .8"> --}}
-        <span class="brand-text font-weight-light">Lakshyarth</span>
+    <a href="{{ session('settings')->logo ?? 'logo.png' }}" class="brand-link" data-toggle="lightbox"
+        data-title="Logo Preview" data-category="2, 4" data-sort="black sample">
+        <img src="{{ session('settings')->logo ?? 'logo.png' }}" alt="Logo Preview"
+            class="brand-image img-circle elevation-3" style="opacity: .8" id="sidebar_logo">
+        <span class="brand-text font-weight-light">
+            {{ session('settings')->company_short_name ?? 'Ghunsuar' }}
+        </span>
     </a>
 
     <!-- Sidebar -->
@@ -173,9 +175,17 @@
                 <li class="nav-header">SETTINGS</li>
                 <li class="nav-item">
                     <a href="{{ route('news_letters.index') }}" class="nav-link">
-                        <i class="nav-icon far fa-image"></i>
+                        <i class="nav-icon fas fa-envelope"></i>
                         <p>
                             News Letters
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('settings.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-cogs"></i>
+                        <p>
+                            Settings
                         </p>
                     </a>
                 </li>

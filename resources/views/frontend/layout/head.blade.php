@@ -6,7 +6,7 @@
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 <!-- site metas -->
 <title>
-    @yield('title') - Lakshyarth Foodgrain
+    @yield('title') - {{ session('settings')->company_full_name ?? 'Lakshyarth Foodgrain' }}
 </title>
 
 <meta name="keywords" content="">

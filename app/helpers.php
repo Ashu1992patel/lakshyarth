@@ -1,9 +1,9 @@
 <?php
 if (!function_exists('file_upload')) {
-    function photo_upload($file, $kisan_id, $path = 'kisan/images', $existing_file = '')
+    function photo_upload($file, $title, $path = 'kisan/images', $existing_file = '')
     {
         // Creating new file name - It'll renamed & stored
-        $imageName = $kisan_id . '-' . time() . '.' . $file->extension();
+        $imageName = $title . '-' . time() . '.' . $file->extension();
 
         // Storing file to specified path with above name
         $file->move(public_path($path), $imageName);

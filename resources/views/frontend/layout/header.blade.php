@@ -7,7 +7,7 @@
                     <div class="full">
                         <div class="center-desk">
                             <div class="logo">
-                                <img src="{{ url('logo.png') }}" alt="#" width="60"
+                                <img src="{{ session('settings')->logo ?? 'logo.png' }}" alt="#" width="60"
                                     style="max-width: 80%;height: auto; " />
                             </div>
                         </div>

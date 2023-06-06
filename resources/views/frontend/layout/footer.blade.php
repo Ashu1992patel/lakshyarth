@@ -51,19 +51,22 @@
                             <a href="#">
                                 <i class="fa fa-map-marker" aria-hidden="true"></i>
                             </a>
-                            Jabalpur, MP
+                            {{ session('settings')->address ?? 'Jabalpur, MP' }}
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="tel: {{ '+91-' . session('settings')->contact_primary ?? '9144444124' }}">
                                 <i class="fa fa-volume-control-phone" aria-hidden="true"></i>
                             </a>
-                            +91-9144444124
+                            {{-- +91-9144444124 --}}
+                            {{ '+91-' . session('settings')->contact_primary ?? '9144444124' }}
                         </li>
                         <li>
-                            <a href="mailto: help@lakshyarth.com">
+                            <a href="mailto: {{ session('settings')->email ?? 'help@lakshyarth.com' }}">
                                 <i class="fa fa-envelope" aria-hidden="true"></i>
                             </a>
-                            help@lakshyarth.com
+
+                            {{ session('settings')->email ?? 'help@lakshyarth.com' }}
+                            {{-- help@lakshyarth.com --}}
                         </li>
                     </ul>
                 </div>
@@ -109,10 +112,12 @@
                 <div class="row">
                     <div class="col-md-12">
                         <p>
-                            Copyright 2019 All Right Reserved By
+                            {{-- Copyright 2019 All Right Reserved By
                             <a href="https://lakshyarth.com/">
                                 Lakshyarth Foordgrain
-                            </a>
+                            </a> --}}
+
+                            {{ session('settings')->footer_text ?? 'Copyright 2019 All Right Reserved By Lakshyarth Foordgrain.' }}
                         </p>
                     </div>
                 </div>

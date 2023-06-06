@@ -7,7 +7,7 @@ use App\Http\Controllers\FarmerAcquirementController;
 use App\Http\Controllers\FarmerController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\NewsLetterController;
-use App\Models\NewsLetter;
+use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,6 +46,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('acquirements', AcquirementController::class);
 
     Route::resource('news_letters', NewsLetterController::class);
+    Route::resource('settings', SettingController::class);
 });
 
 require __DIR__ . '/auth.php';

@@ -16,13 +16,12 @@
     @include('frontend.layout.header')
     <!-- end header inner -->
     <!-- end header -->
-
     @yield('frontend-content')
 
     <!--  footer -->
     @include('frontend.layout.footer')
     <!-- end footer -->
-    
+
     <!-- Javascript files-->
     <script src="frontend/js/jquery.min.js"></script>
     <script src="frontend/js/popper.min.js"></script>
