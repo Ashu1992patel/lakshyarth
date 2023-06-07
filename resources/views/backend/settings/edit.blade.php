@@ -275,7 +275,7 @@
                                                 data-title="Banner Image 1 Preview" class="text-center"
                                                 data-category="2, 4" data-sort="black sample">
                                                 <img src="{{ url($settings->banner_image) }}" class="elevation-2 photo"
-                                                    id="banner_image" alt="Banner Image 1 Preview" width="250px" />
+                                                    id="banner_image" alt="Banner Image 1 Preview" width="200px" />
                                             </a>
                                         @else
                                             <img id="banner_image" alt="Banner Image 1 Preview" class="elevation-2 photo"
@@ -311,7 +311,7 @@
                                                 data-title="Banner Image 2 Preview" class="text-center"
                                                 data-category="2, 4" data-sort="black sample">
                                                 <img src="{{ url($settings->box_image_1) }}" class="elevation-2 photo"
-                                                    id="box_image_1" alt="Banner Image 1 Preview" width="250px" />
+                                                    id="box_image_1" alt="Banner Image 1 Preview" width="200px" />
                                             </a>
                                         @else
                                             <img id="box_image_1" alt="Banner Image 1 Preview" class="elevation-2 photo"
@@ -348,7 +348,7 @@
                                                 data-title="Banner Image 2 Preview" class="text-center"
                                                 data-category="2, 4" data-sort="black sample">
                                                 <img src="{{ url($settings->box_image_2) }}" class="elevation-2 photo"
-                                                    id="box_image_2" alt="Banner Image 2 Preview" width="250px" />
+                                                    id="box_image_2" alt="Banner Image 2 Preview" width="200px" />
                                             </a>
                                         @else
                                             <img id="box_image_2" alt="Banner Image 1 Preview" class="elevation-2 photo"
@@ -385,7 +385,7 @@
                                                 data-title="Banner Image 2 Preview" class="text-center"
                                                 data-category="2, 4" data-sort="black sample">
                                                 <img src="{{ url($settings->box_image_3) }}" class="elevation-2 photo"
-                                                    id="box_image_3" alt="Banner Image 3 Preview" width="250px" />
+                                                    id="box_image_3" alt="Banner Image 3 Preview" width="200px" />
                                             </a>
                                         @else
                                             <img id="box_image_3" alt="Banner Image 1 Preview" class="elevation-2 photo"
