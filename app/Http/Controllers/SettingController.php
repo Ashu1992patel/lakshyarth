@@ -99,6 +99,8 @@ class SettingController extends Controller
 
         $setting->update($mergredRequest);
 
+        session()->put('settings', Setting::first(['logo', 'company_full_name', 'company_short_name', 'address', 'contact_primary', 'contact_secondary', 'email', 'footer_text', 'banner_image', 'box_image_1', 'box_image_2', 'box_image_3']));
+
         notify()->success('Site setting has been updated successfully.');
 
         return redirect()->route('settings.index')->withInput();
