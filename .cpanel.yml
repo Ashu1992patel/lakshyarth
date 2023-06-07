@@ -6,7 +6,8 @@ deployment:
     # - export DEPLOYPATH=/home/a1630xeb/public_html/staging.lakshyarth.com/
 
     # Public directory path
-    # - export DEPLOYPATH=/home/a1630xeb/public_html/testing.lakshyarth.com/
+    - export DEPLOYPATH_TESTING=/home/a1630xeb/public_html/testing.lakshyarth.com/
     - export DEPLOYPATH=/home/a1630xeb/public_html/lakshyarth.com/
 
     - /bin/cp -R * $DEPLOYPATH
+    - /bin/cp -R * $DEPLOYPATH_TESTING
