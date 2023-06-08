@@ -29,7 +29,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <!-- left column -->
-                    <div class="col-md-12">
+                    <div class="col-lg-7 col-md-6 col-sm-12">
                         <!-- general form elements -->
                         <div class="card card-primary">
                             <!-- /.card-header -->
@@ -59,10 +59,11 @@
 
                                     <div class="card-body">
                                         <div class="form-group row">
-                                            <label for="company_full_name" class="col-sm-4 col-form-label">
+                                            <label for="company_full_name"
+                                                class="col-lg-4 col-md-12 col-sm-12 col-form-label">
                                                 Company Name (FULL)
                                             </label>
-                                            <div class="col-sm-8">
+                                            <div class="col-lg-8 col-md-12 col-sm-12">
                                                 <input type="text" class="form-control" id="company_full_name"
                                                     name="company_full_name" placeholder="Enter Company's Full Name"
                                                     value="{{ old('company_full_name', $settings->company_full_name) }}"
@@ -70,10 +71,11 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="company_short_name" class="col-sm-4 col-form-label">
+                                            <label for="company_short_name"
+                                                class="col-lg-4 col-md-12 col-sm-12 col-form-label">
                                                 Company Name (Short)
                                             </label>
-                                            <div class="col-sm-8">
+                                            <div class="col-lg-8 col-md-12 col-sm-12">
                                                 <input type="text" class="form-control" id="company_short_name"
                                                     name="company_short_name" placeholder="Enter Company's Short Name"
                                                     value="{{ old('company_short_name', $settings->company_short_name) }}"
@@ -81,10 +83,10 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="address" class="col-sm-4 col-form-label">
+                                            <label for="address" class="col-lg-4 col-md-12 col-sm-12 col-form-label">
                                                 Address
                                             </label>
-                                            <div class="col-sm-8">
+                                            <div class="col-lg-8 col-md-12 col-sm-12">
                                                 <input type="text" class="form-control" id="address" name="address"
                                                     placeholder="Enter address"
                                                     value="{{ old('address', $settings->address) }}" required
@@ -92,11 +94,11 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="contact_primary" class="col-sm-4 col-form-label">
+                                            <label for="contact_primary" class="col-lg-4 col-md-12 col-sm-12 col-form-label">
                                                 Contact
                                                 <small>(Primary)</small>
                                             </label>
-                                            <div class="col-sm-8">
+                                            <div class="col-lg-8 col-md-8 col-sm-12">
                                                 <input type="text" class="form-control" id="contact_primary"
                                                     name="contact_primary" placeholder="Enter contact_primary"
                                                     value="{{ old('contact_primary', $settings->contact_primary) }}"
@@ -104,11 +106,12 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="contact_secondary" class="col-sm-4 col-form-label">
+                                            <label for="contact_secondary"
+                                                class="col-lg-4 col-md-12 col-sm-12 col-form-label">
                                                 Contact
                                                 <small>(Secondary)</small>
                                             </label>
-                                            <div class="col-sm-8">
+                                            <div class="col-lg-8 col-md-8 col-sm-12">
                                                 <input type="text" class="form-control" id="secondary_contact"
                                                     name="contact_secondary" placeholder="Enter Secondary Contact"
                                                     value="{{ old('contact_secondary', $settings->contact_secondary) }}"
@@ -116,10 +119,32 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="email" class="col-sm-4 col-form-label">
+                                            <label for="theme" class="col-lg-4 col-md-12 col-sm-12 col-form-label">
+                                                Theme
+                                                <a href="{{ url('/') }}" target="_blank"
+                                                    style="font-size: 0.5rem; color: red">
+                                                    Click Here
+                                                </a>
+                                            </label>
+                                            <div class="col-lg-8 col-md-8 col-sm-12">
+                                                <select class="custom-select form-control-border" id="theme"
+                                                    name="theme">
+                                                    <option value="1"
+                                                        {{ old('theme', $settings->theme) == 1 ? 'selected' : '' }}>
+                                                        Theme 1
+                                                    </option>
+                                                    <option value="2"
+                                                        {{ old('theme', $settings->theme) == 2 ? 'selected' : '' }}>
+                                                        Theme 2
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="email" class="col-lg-4 col-md-12 col-sm-12 col-form-label">
                                                 Email
                                             </label>
-                                            <div class="col-sm-8">
+                                            <div class="col-lg-8 col-md-8 col-sm-12">
                                                 <input type="email" class="form-control" id="email" name="email"
                                                     placeholder="Enter email" value="{{ old('email', $settings->email) }}"
                                                     required autocomplete="email">
@@ -127,22 +152,63 @@
                                         </div>
 
                                         <div class="form-group row">
-                                            <label for="footer_text" class="col-sm-4 col-form-label">
+                                            <label for="footer_text" class="col-lg-4 col-md-12 col-sm-12 col-form-label">
                                                 Footer Text
                                             </label>
-                                            <div class="col-sm-8">
+                                            <div class="col-lg-8 col-md-8 col-sm-12">
                                                 <input type="text" class="form-control" id="footer_text"
                                                     name="footer_text" placeholder="Enter footer text"
                                                     value="{{ old('footer_text', $settings->footer_text) }}" required
                                                     autocomplete="footer_text">
                                             </div>
                                         </div>
+                                    </div>
 
+                                    <!-- /.card-body -->
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-primary">Update Settings</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- /.card -->
+                    </div>
+
+                    <div class="col-lg-5 col-md-6 col-sm-12">
+                        <!-- general form elements -->
+                        <div class="card card-success">
+                            <!-- /.card-header -->
+                            <!-- Widget: user widget style 1 -->
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    Upload Images
+                                </h3>
+
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"
+                                        title="Collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="remove"
+                                        title="Remove">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- /.widget-user -->
+                            <!-- form start -->
+                            <div class="card-body p-0">
+                                <form method="POST" action="{{ route('settings.update', $settings->id) }}"
+                                    enctype="multipart/form-data">
+                                    @csrf
+                                    @method('PATCH')
+
+                                    <div class="card-body">
                                         <div class="form-group row">
-                                            <label for="logo" class="col-sm-4 col-form-label">
+                                            <label for="logo" class="col-lg-4 col-md-12 col-sm-12 col-form-label">
                                                 Logo
                                             </label>
-                                            <div class="col-sm-6">
+                                            <div class="col-lg-6 col-md-6 col-sm-12">
                                                 <div class="input-group">
                                                     <div class="custom-file">
                                                         <input type="file" class="custom-file-input" id="logo_id"
@@ -154,7 +220,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-2">
+                                            <div class="col-lg-2 col-md-2 col-sm-12">
                                                 @if ($settings->logo)
                                                     <a href="{{ url($settings->logo) }}" data-toggle="lightbox"
                                                         data-title="Logo Preview" class="text-center"
@@ -170,10 +236,10 @@
                                         </div>
 
                                         <div class="form-group row">
-                                            <label for="banner_image" class="col-sm-4 col-form-label">
+                                            <label for="banner_image" class="col-lg-4 col-md-12 col-sm-12 col-form-label">
                                                 Banner Image
                                             </label>
-                                            <div class="col-sm-8">
+                                            <div class="col-lg-8 col-md-8 col-sm-12">
                                                 <div class="input-group">
                                                     <div class="custom-file">
                                                         <input type="file" class="custom-file-input"
@@ -188,10 +254,10 @@
                                         </div>
 
                                         <div class="form-group row">
-                                            <label for="box_image_1" class="col-sm-4 col-form-label">
+                                            <label for="box_image_1" class="col-lg-4 col-md-12 col-sm-12 col-form-label">
                                                 Box Image 1
                                             </label>
-                                            <div class="col-sm-8">
+                                            <div class="col-lg-8 col-md-8 col-sm-12">
                                                 <div class="input-group">
                                                     <div class="custom-file">
                                                         <input type="file" class="custom-file-input"
@@ -205,10 +271,10 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="box_image_2" class="col-sm-4 col-form-label">
+                                            <label for="box_image_2" class="col-lg-4 col-md-12 col-sm-12 col-form-label">
                                                 Box Image 2
                                             </label>
-                                            <div class="col-sm-8">
+                                            <div class="col-lg-8 col-md-8 col-sm-12">
                                                 <div class="input-group">
                                                     <div class="custom-file">
                                                         <input type="file" class="custom-file-input"
@@ -222,10 +288,10 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="box_image_3" class="col-sm-4 col-form-label">
+                                            <label for="box_image_3" class="col-lg-4 col-md-12 col-sm-12 col-form-label">
                                                 Box Image 3
                                             </label>
-                                            <div class="col-sm-8">
+                                            <div class="col-lg-8 col-md-8 col-sm-12">
                                                 <div class="input-group">
                                                     <div class="custom-file">
                                                         <input type="file" class="custom-file-input"
@@ -242,7 +308,7 @@
 
                                     <!-- /.card-body -->
                                     <div class="card-footer">
-                                        <button type="submit" class="btn btn-primary">Update Settings</button>
+                                        <button type="submit" class="btn btn-success">Update Settings</button>
                                     </div>
                                 </form>
                             </div>
@@ -250,7 +316,7 @@
                         <!-- /.card -->
                     </div>
                     <!--/.col (left) -->
-                    <div class="col-md-12">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
                         <div class="row">
                             <!-- Banner Image -->
                             <div class="col-sm-12 col-md-6 col-lg-3">

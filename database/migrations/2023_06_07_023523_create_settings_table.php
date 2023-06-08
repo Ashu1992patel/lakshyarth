@@ -23,6 +23,7 @@ class CreateSettingsTable extends Migration
             $table->string('contact_secondary')->default("9144444124");
             $table->string('email')->default("help@lakshyarth.com");
             $table->string('footer_text')->default("Copyright 2019 All Right Reserved By Lakshyarth Foordgrain");
+            $table->string('theme')->default("1")->comment("Theme for guest user");
             $table->string('banner_image')->default("images/banner.jpg");
             $table->string('box_image_1')->default("frontend/images/img1.jpg");
             $table->string('box_image_2')->default("frontend/images/img2.jpg");

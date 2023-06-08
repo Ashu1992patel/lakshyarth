@@ -70,6 +70,7 @@ class SettingController extends Controller
      */
     public function update(Request $request, Setting $setting)
     {
+        // dd($request->all());
         $mergredRequest = $request->all();
 
         // Uploading logo

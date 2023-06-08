@@ -23,6 +23,7 @@ class SettingSeeder extends Seeder
             'contact_secondary' => "9144444124",
             'email' => "help@lakshyarth.com",
             'footer_text' => "Copyright 2019 All Right Reserved By Lakshyarth Foordgrain",
+            'theme' => 1,
             'banner_image' => "frontend/images/banner.jpg",
             'box_image_1' => "frontend/images/img1.jpg",
             'box_image_2' => "frontend/images/img2.jpg",
