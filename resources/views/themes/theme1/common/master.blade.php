@@ -6,6 +6,11 @@
 </head>
 
 <body>
+
+    <!-- Loader Start -->
+    @include('themes.theme1.common.loader')
+    <!-- Loader End -->
+
     <!-- Topbar Start -->
     @include('themes.theme1.common.topbar')
     <!-- Topbar End -->
@@ -30,6 +35,8 @@
     <!-- Back to Top End -->
 
     @include('themes.theme1.common.scripts')
+
+    
 </body>
 
 </html>

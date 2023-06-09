@@ -27,4 +27,7 @@
 <!-- Template Stylesheet -->
 <link href="{{ url('themes/theme1/css/style.css') }}" rel="stylesheet">
 
+<!-- Loader -->
+<link href="{{ url('themes/theme1/css/loader.css') }}" rel="stylesheet">
+
 @yield('styles')

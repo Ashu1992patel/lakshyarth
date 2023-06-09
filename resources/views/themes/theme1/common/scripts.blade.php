@@ -9,4 +9,12 @@
 <!-- Template Javascript -->
 <script src="{{ url('themes/theme1/js/main.js') }}"></script>
 
+<script>
+    $(window).on('load', function() {
+        setTimeout(() => {
+            $('#loading').hide();
+        }, 1500)
+    });
+</script>
+
 @yield('scripts')
