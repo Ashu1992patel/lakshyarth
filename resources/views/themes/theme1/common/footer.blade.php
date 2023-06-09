@@ -2,7 +2,7 @@
  <div class="container-fluid bg-footer bg-primary text-white mt-5">
      <div class="container">
          <div class="row gx-5">
-             <div class="col-lg-8 col-md-6">
+             <div class="col-lg-8 col-md-6 col-sm-12">
                  <div class="row gx-5">
                      <div class="col-lg-4 col-md-12 pt-5 mb-5">
                          <h4 class="text-white mb-4">
@@ -112,12 +112,18 @@
                      </div>
                  </div>
              </div>
-             <div class="col-lg-4 col-md-6 mt-lg-n5">
+             <div class="col-lg-4 col-md-6 col-sm-12 mt-lg-n5">
                  <div
                      class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-secondary p-5">
-                     <h4 class="text-white">Newsletter</h4>
-                     <h6 class="text-white">Subscribe Our Newsletter</h6>
-                     <p>Amet justo diam dolor rebum lorem sit stet sea justo kasd</p>
+                     <h4 class="text-white">
+                         Newsletter
+                     </h4>
+                     <h6 class="text-white">
+                         Subscribe Our Newsletter
+                     </h6>
+                     <p>
+                         {{-- Amet justo diam dolor rebum lorem sit stet sea justo kasd --}}
+                     </p>
                      <form action="{{ route('news_letters.subscribe') }}" method="post">
                          @csrf
                          @method('post')
