@@ -47,7 +47,7 @@
                     <!-- /.col -->
                     <div class="col-12 col-sm-6 col-md-3">
                         <div class="info-box">
-                            <span class="info-box-icon bg-success elevation-1">
+                            <span class="info-box-icon bg-secondary elevation-1">
                                 <i class="fas fa-list"></i>
                             </span>
 
@@ -80,6 +80,40 @@
                         </div>
                         <!-- /.info-box -->
                     </div>
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-success elevation-1">
+                                <i class="fas fa-list"></i>
+                            </span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text">Subscribers</span>
+                                <span class="info-box-number">
+                                    {{ $subscribers }}
+                                    {{-- <small>%</small> --}}
+                                </span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-dark elevation-1">
+                                <i class="fas fa-question-circle"></i>
+                            </span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text">Queries</span>
+                                <span class="info-box-number">
+                                    {{ $client_requests }}
+                                    {{-- <small>%</small> --}}
+                                </span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
 
 
                     <!-- /.col -->
@@ -103,7 +137,7 @@
                     <div class="col-12 col-sm-6 col-md-3">
                         <div class="info-box mb-3">
                             <span class="info-box-icon bg-danger elevation-1">
-                                <i class="fas fa-sign-out"></i>
+                                <i class="fas fa-home"></i>
                             </span>
 
                             <div class="info-box-content">
@@ -226,7 +260,7 @@
                                 </div>
                             </div>
                             <!-- /.card-header -->
-                            <div class="card-body p-0">`
+                            <div class="card-body p-0">
                                 <ul style="display: flex;flex-flow: row wrap;justify-content: space-around;">
                                     @foreach ($farmers->take(14) as $farmer)
                                         <li class="text-center m-2 p-2">
@@ -303,7 +337,7 @@
                                 </div>
                             </div>
                             <!-- /.card-header -->
-                            <div class="card-body p-0">`
+                            <div class="card-body p-0">
                                 <ul style="display: flex;flex-flow: row wrap;justify-content: space-around;">
                                     @foreach ($acquirements->take(8) as $acquirement)
                                         <li class="text-center m-2 p-2"
@@ -382,7 +416,7 @@
                                 </div>
                             </div>
                             <!-- /.card-header -->
-                            <div class="card-body p-0">`
+                            <div class="card-body p-0">
                                 <ul style="display: flex;flex-flow: row wrap;justify-content: space-around;">
                                     @foreach ($acquirementsCleared->take(8) as $acquirement)
                                         <li class="text-center m-2 p-2"
