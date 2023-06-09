@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AcquirementController;
 use App\Http\Controllers\AdminPagesController;
+use App\Http\Controllers\ClientRequestController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\FarmerAcquirementController;
 use App\Http\Controllers\FarmerController;
@@ -29,6 +30,7 @@ Route::get('services', [GuestController::class, 'services'])->name('services');
 Route::get('contact', [GuestController::class, 'contact'])->name('contact');
 Route::post('contact', [ContactUsController::class, 'store'])->name('contact');
 Route::post('news_letters.subscribe', [GuestController::class, 'subscribe'])->name('news_letters.subscribe');
+Route::post('contactus', [GuestController::class, 'contactus'])->name('contactus');
 
 // Route After Authentication i.e LOGIN
 Route::middleware(['auth'])->group(function () {
@@ -42,6 +44,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('acquirements', AcquirementController::class);
 
     Route::resource('news_letters', NewsLetterController::class);
+    Route::resource('client_requests', ClientRequestController::class);
     Route::resource('settings', SettingController::class);
 });
 

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ClientContactUsRequest;
 use App\Http\Requests\NewsLetterRequest;
+use App\Models\ClientRequest;
 use App\Models\NewsLetter;
 use App\Models\Setting;
 use Illuminate\Http\Request;
@@ -60,8 +62,23 @@ class GuestController extends Controller
     function subscribe(NewsLetterRequest $request)
     {
         NewsLetter::create([
-            "email" => $request->email
+            'email' => $request->email,
         ]);
-        return redirect()->back()->with("success", "Congratulation! you have subscribed our neswletter.");
+        return redirect()
+            ->back()
+            ->with('success', 'Congratulation! you have subscribed our neswletter.');
+    }
+
+    function contactus(ClientContactUsRequest $request)
+    {
+        ClientRequest::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'subject' => $request->subject,
+            'message' => $request->message,
+        ]);
+        return redirect()
+            ->back()
+            ->with('success', 'Thanks for writing us! Our team will get in touch with you soon.');
     }
 }

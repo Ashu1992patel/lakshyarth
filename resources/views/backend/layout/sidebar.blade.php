@@ -189,6 +189,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('client_requests.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-question-circle"></i>
+                        <p>
+                            Contact Us
+                        </p>
+                    </a>
+                </li>
 
                 {{-- <li class="nav-item">
                     <a href="#" class="nav-link">

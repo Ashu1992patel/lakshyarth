@@ -25,22 +25,28 @@
             <div class="row g-0">
                 <div class="col-lg-7">
                     <div class="bg-primary h-100 p-5">
-                        <form>
+                        <form action="{{ route('contactus') }}" method="post">
+                            @csrf
+                            @method('POST')
                             <div class="row g-3">
                                 <div class="col-6">
-                                    <input type="text" class="form-control bg-light border-0 px-4"
-                                        placeholder="Your Name" style="height: 55px;">
+                                    <input type="text" class="form-control bg-light border-0 px-4" required
+                                        autocomplete="name" placeholder="Your Name" name="name" id="name"
+                                        style="height: 55px;">
                                 </div>
                                 <div class="col-6">
-                                    <input type="email" class="form-control bg-light border-0 px-4"
-                                        placeholder="Your Email" style="height: 55px;">
-                                </div>
-                                <div class="col-12">
-                                    <input type="text" class="form-control bg-light border-0 px-4" placeholder="Subject"
+                                    <input type="email" class="form-control bg-light border-0 px-4" required
+                                        autocomplete="email" placeholder="Your Email" name="email" id="email"
                                         style="height: 55px;">
                                 </div>
                                 <div class="col-12">
-                                    <textarea class="form-control bg-light border-0 px-4 py-3" rows="2" placeholder="Message"></textarea>
+                                    <input type="text" class="form-control bg-light border-0 px-4" name="subject"
+                                        required autocomplete="subject" id="subject" placeholder="Subject"
+                                        style="height: 55px;">
+                                </div>
+                                <div class="col-12">
+                                    <textarea name="message" id="message" required autocomplete="message"class="form-control bg-light border-0 px-4 py-3"
+                                        rows="2" placeholder="Message"></textarea>
                                 </div>
                                 <div class="col-12">
                                     <button class="btn btn-secondary w-100 py-3" type="submit">Send Message</button>
