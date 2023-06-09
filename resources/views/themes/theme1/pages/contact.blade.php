@@ -64,8 +64,12 @@
                                 <i class="bi bi-geo-alt fs-4 text-white"></i>
                             </div>
                             <div class="ps-3">
-                                <h5 class="text-white">Our Office</h5>
-                                <span class="text-white">123 Street, New York, USA</span>
+                                <h5 class="text-white">
+                                    Our Office
+                                </h5>
+                                <span class="text-white">
+                                    {{ request()->session()->has('settings')? session('settings')->address: '-' }}
+                                </span>
                             </div>
                         </div>
                         <div class="d-flex mb-4">
@@ -75,7 +79,9 @@
                             </div>
                             <div class="ps-3">
                                 <h5 class="text-white">Email Us</h5>
-                                <span class="text-white">info@example.com</span>
+                                <span class="text-white">
+                                    {{ request()->session()->has('settings')? session('settings')->email: '-' }}
+                                </span>
                             </div>
                         </div>
                         <div class="d-flex">
@@ -85,7 +91,9 @@
                             </div>
                             <div class="ps-3">
                                 <h5 class="text-white">Call Us</h5>
-                                <span class="text-white">+012 345 6789</span>
+                                <span class="text-white">
+                                    {{ request()->session()->has('settings')? session('settings')->contact_primary: '-' }}
+                                </span>
                             </div>
                         </div>
                     </div>

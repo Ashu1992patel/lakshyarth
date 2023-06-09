@@ -22,14 +22,15 @@
                          </div>
                          <div class="d-flex mb-2">
                              <i class="bi bi-telephone text-white me-2"></i>
-                             <p class="text-white mb-0" href="tel: {{ session('settings')->contact_primary ?? '-' }}">
-                                 <a href="tel: {{ session('settings')->contact_primary ?? '-' }}"
+                             <p class="text-white mb-0"
+                                 href="tel: {{ session()->has('settings') ? session('settings')->contact_primary : '-' }}">
+                                 <a href="tel: {{ session()->has('settings') ? session('settings')->contact_primary : '-' }}"
                                      style="color: #fffffa">
-                                     {{ session('settings')->contact_primary ?? '-' }}
+                                     {{ session()->has('settings') ? session('settings')->contact_primary : '-' }}
                                  </a>
                              </p>
                          </div>
-                         @if (session('settings')->contact_secondary)
+                         @if (session()->has('settings') && session('settings')->contact_secondary)
                              <div class="d-flex mb-2">
                                  <i class="bi bi-telephone text-white me-2"></i>
                                  <p class="text-white mb-0">
@@ -145,7 +146,7 @@
                  {{ request()->getHost() }}
              </a>. All Rights Reserved. Handled by
              <a class="text-secondary fw-bold" href="{{ url('/') }}">
-                 {{ session('settings')->company_full_name ?? '-' }}
+                 {{ session()->has('settings') ? session('settings')->company_full_name : '-' }}
              </a>
          </p>
      </div>

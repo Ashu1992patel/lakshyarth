@@ -6,17 +6,18 @@
              <div class="d-flex align-items-center justify-content-start">
                  <i class="bi bi-phone-vibrate fs-1 text-primary me-2"></i>
                  <h2 class="mb-0">
-                     <a href="tel:{{ session('settings')->contact_primary ?? '+919144444124' }}" style="color: black">
-                         {{ session('settings')->contact_primary ?? '+919144444124' }}
+                     <a href="tel:{{ session()->has('settings') ? session('settings')->contact_primary : '-' }}"
+                         style="color: black">
+                         {{ session()->has('settings') ? session('settings')->contact_primary : '-' }}
                      </a>
                  </h2>
              </div>
          </div>
          <div class="col-lg-6">
              <div class="d-flex align-items-center justify-content-center">
-                 <a href="index.html" class="navbar-brand ms-lg-5">
+                 <a href="{{ route('home') }}" class="navbar-brand ms-lg-5">
                      <h1 class="m-0 display-4 text-primary">
-                         @if (session('settings')->logo)
+                         @if (session()->has('settings'))
                              <img src="{{ url(session('settings')->logo ?? 'logo.png') }}" alt="Logo" width="80px"
                                  class="py-2">
                          @else
