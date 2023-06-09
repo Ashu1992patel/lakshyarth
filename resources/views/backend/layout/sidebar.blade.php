@@ -174,7 +174,8 @@
 
                 <li class="nav-header">SETTINGS</li>
                 <li class="nav-item">
-                    <a href="{{ route('news_letters.index') }}" class="nav-link">
+                    <a href="{{ route('news_letters.index') }}"
+                        class="nav-link {{ request()->is('news_letters') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-envelope"></i>
                         <p>
                             News Letters
@@ -182,7 +183,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('settings.index') }}" class="nav-link">
+                    <a href="{{ route('settings.index') }}"
+                        class="nav-link {{ request()->is('settings') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-cogs"></i>
                         <p>
                             Settings
@@ -190,7 +192,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('client_requests.index') }}" class="nav-link">
+                    <a href="{{ route('client_requests.index') }}"
+                        class="nav-link {{ request()->is('client_requests') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-question-circle"></i>
                         <p>
                             Contact Us

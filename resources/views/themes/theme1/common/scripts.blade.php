@@ -17,6 +17,7 @@
         }, 1500)
     });
 </script>
+
 <!-- toastr notification -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.0/js/toastr.js"></script>
 <script>

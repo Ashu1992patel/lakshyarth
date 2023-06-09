@@ -3,9 +3,13 @@
 
 <head>
     @include('backend.layout.head')
+    <!-- Loader -->
+    <link href="{{ url('themes/theme1/css/loader.css') }}" rel="stylesheet">
 </head>
 
-<body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+{{-- dark-mode --}}
+
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed text-sm">
     <div class="wrapper">
 
         <!-- Preloader -->
@@ -29,7 +33,7 @@
         <!-- /.control-sidebar -->
 
         <!-- Main Footer -->
-        {{-- @include('backend.layout.footer') --}}
+        @include('backend.layout.footer')
     </div>
     <!-- ./wrapper -->
 
@@ -293,6 +297,15 @@
                 document.getElementById('rst_select_all').checked = false;
             }
         }
+    </script>
+
+    <!-- Loader -->
+    <script>
+        $(window).on('load', function() {
+            setTimeout(() => {
+                $('#loading').hide();
+            }, 1500)
+        });
     </script>
 
     {{-- @if ($errors->any())

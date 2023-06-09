@@ -235,7 +235,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group row">
+                                        {{-- <div class="form-group row">
                                             <label for="banner_image" class="col-lg-4 col-md-12 col-sm-12 col-form-label">
                                                 Banner Image
                                             </label>
@@ -252,7 +252,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
                                         <div class="form-group row">
                                             <label for="box_image_1" class="col-lg-4 col-md-12 col-sm-12 col-form-label">
                                                 Box Image 1
@@ -303,7 +302,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     </div>
 
                                     <!-- /.card-body -->
@@ -316,7 +315,7 @@
                         <!-- /.card -->
                     </div>
                     <!--/.col (left) -->
-                    <div class="col-lg-12 col-md-12 col-sm-12">
+                    {{-- <div class="col-lg-12 col-md-12 col-sm-12">
                         <div class="row">
                             <!-- Banner Image -->
                             <div class="col-sm-12 col-md-6 col-lg-3">
@@ -465,7 +464,7 @@
                             </div>
                             <!-- /. Box Image 3 -->
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <!-- /.row -->
             </div><!-- /.container-fluid -->
