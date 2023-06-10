@@ -1,8 +1,7 @@
 <!-- Navbar Start -->
 <nav class="navbar navbar-expand-lg bg-primary navbar-dark shadow-sm py-3 py-lg-0 px-3 px-lg-5">
-    <a href="index.html" class="navbar-brand d-flex d-lg-none">
+    <a href="{{ route('home') }}" class="navbar-brand d-flex d-lg-none">
         <h1 class="m-0 display-4 text-secondary">
-
             @if (session()->has('settings'))
                 <img src="{{ url(session('settings')->logo ?? 'logo.png') }}" alt="Logo" width="45px">
             @else
