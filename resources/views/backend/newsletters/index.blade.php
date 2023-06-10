@@ -57,20 +57,28 @@
                                             <tr>
 
                                                 <td>{{ ++$key }}</td>
-                                                <td>{{ $news_letter->email }}</td>
+                                                <td>
+                                                    <a href="mailto:{{ $news_letter->email }}">
+                                                        <i class="fas fa-envelope"></i>
+                                                        {{ $news_letter->email }}
+                                                    </a>
+                                                </td>
                                                 <td>{{ $news_letter->created }}</td>
                                                 <td>{{ $news_letter->updated }}</td>
 
-
-                                                <td class="text-right py-0 align-middle">
+                                                <td class="text-right py-0 align-middle text-center">
                                                     <div class="btn-group btn-group-sm">
+                                                        <a class="fas fa-trash" title="Remove farmer records from database."
+                                                            onclick="handleDelete({{ $news_letter->id }})">
+                                                        </a>
+
                                                         <form action="{{ route('news_letters.destroy', $news_letter->id) }}"
                                                             method="post">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class="btn fa fa-trash text-danger"
+                                                                id="{{ $news_letter->id }}"
                                                                 onclick="return confirm('Are you sure to remove subscription of {{ $news_letter->email }}?')">
-                                                                Unsubscribe
                                                             </button>
                                                         </form>
                                                     </div>
@@ -93,4 +101,10 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+    <script>
+        function handleDelete(id) {
+            let item = document.getElementById(id);
+            item.click();
+        }
+    </script>
 @endsection

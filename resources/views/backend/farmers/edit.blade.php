@@ -183,12 +183,21 @@
                                     </div>
                                     <div class="card-body">
                                         @if ($farmer->photo_status)
-                                            <img src="{{ url($farmer->photo) }}"
-                                                alt="{{ $farmer->name . '`s profile photo' }}" id="photo_preview"
-                                                width="150px" class="elevation-2 photo">
+                                            <a href="{{ url($farmer->photo) }}" data-toggle="lightbox" data-title="-"
+                                                data-gallery="gallery" style="display: inline-block;">
+
+                                                <img src="{{ url($farmer->photo) }}"
+                                                    class="img-fluid mb-2 elevation-2 photo"
+                                                    alt="{{ $farmer->name . '`s profile photo' }}" id="photo_preview"
+                                                    width="150px">
+                                            </a>
                                         @else
-                                            <img id="photo_preview" alt="Farmer Photo Preview" class="table-avatar"
-                                                src="{{ url('backend/dist/img/avatar5.png') }}" width="150px">
+                                            <a href="{{ url('kisaan.png') }}" data-toggle="lightbox" data-title="-"
+                                                data-gallery="gallery" style="display: inline-block;">
+
+                                                <img src="{{ url('kisaan.png') }}" class="img-fluid mb-2" width="150px"
+                                                    id="photo_preview" alt="Farmer Photo Preview">
+                                            </a>
                                         @endif
 
                                     </div>

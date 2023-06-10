@@ -60,21 +60,32 @@
                                             <tr>
                                                 <td>{{ ++$key }}</td>
                                                 <td>{{ $client_request->name }}</td>
-                                                <td>{{ $client_request->email }}</td>
+                                                <td>
+                                                    <a href="mailto:{{ $client_request->email }}">
+                                                        <i class="fas fa-envelope fa-sm"></i>{{ $client_request->email }}
+                                                    </a>
+                                                </td>
                                                 <td>{{ $client_request->subject }}</td>
                                                 <td>{{ $client_request->message }}</td>
-                                                <td>{{ $client_request->status ? '✔' : '❌' }}</td>
+                                                <td
+                                                    title="{{ $client_request->status ? 'It is not resolved' : 'Already resolved' }}">
+                                                    {{ $client_request->status ? '✔' : '❌' }}
+                                                </td>
                                                 <td>{{ $client_request->created }}</td>
                                                 <td class="text-right py-0 align-middle">
                                                     <div class="btn-group btn-group-sm">
+                                                        <a class="fas fa-trash" title="Remove farmer records from database."
+                                                            onclick="handleDelete({{ $client_request->id }})">
+                                                        </a>
+
                                                         <form
                                                             action="{{ route('client_requests.destroy', $client_request->id) }}"
                                                             method="post">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class="btn fa fa-trash text-danger"
+                                                                id="{{ $client_request->id }}"
                                                                 onclick="return confirm('Are you sure to remove this request?')">
-                                                                Delete
                                                             </button>
                                                         </form>
                                                     </div>
@@ -95,4 +106,10 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+    <script>
+        function handleDelete(id) {
+            let item = document.getElementById(id);
+            item.click();
+        }
+    </script>
 @endsection

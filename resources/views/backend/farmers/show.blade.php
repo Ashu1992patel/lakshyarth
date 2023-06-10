@@ -168,9 +168,14 @@
                                                     alt="{{ $farmer->name . '`s Profile Photo' }}" width="200px" />
                                             </a>
                                         @else
-                                            <img id="photo_preview" alt="Farmer Photo Preview" class="table-avatar"
-                                                src="{{ url('backend/dist/img/avatar5.png') }}" width="150px"
-                                                title="{{ $farmer->name }} ({{ $farmer->kisan_id }})'s photo is not uploaded.">
+                                            <a href="{{ url('kisaan.png') }}" data-toggle="lightbox"
+                                                data-title="{{ $farmer->name }} ({{ $farmer->kisan_id }})'s photo is not available."
+                                                data-gallery="gallery" style="display: inline-block;"
+                                                title="{{ $farmer->name }} ({{ $farmer->kisan_id }})'s photo is not available.">
+
+                                                <img src="{{ url('kisaan.png') }}" class="img-fluid mb-2" width="50px"
+                                                    alt="-" id="photo_preview" width="150px">
+                                            </a>
                                         @endif
                                     </div>
                                     <!-- /.card-body -->
@@ -199,8 +204,9 @@
                                             <a href="{{ url($farmer->aadhaar_card) }}" data-toggle="lightbox"
                                                 data-title="{{ $farmer->name . '`s Aadhaar Card' }}" class="text-center"
                                                 data-category="2, 4" data-sort="black sample" target="_blank">
-                                                <img src="{{ url($farmer->aadhaar_card) }}" class="photo" id="photo"
-                                                    alt="{{ $farmer->name . '`s Aadhaar Card' }}" width="200px" />
+                                                <img src="{{ url($farmer->aadhaar_card) }}" class="photo"
+                                                    id="photo" alt="{{ $farmer->name . '`s Aadhaar Card' }}"
+                                                    width="200px" />
                                             </a>
                                         @else
                                             <img id="aadhaar_preview" alt="Farmer Aadhaar card preview"

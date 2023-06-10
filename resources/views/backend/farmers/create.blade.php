@@ -152,7 +152,7 @@
                                 <!-- Form Element sizes -->
                                 <div class="card card-success">
                                     <div class="card-header">
-                                        <h3 class="card-title">Farmer Photo Preview</h3>
+                                        <h3 class="card-title">Farmer's Photo Preview</h3>
                                         <div class="card-tools">
                                             <button type="button" class="btn btn-tool" data-card-widget="collapse"
                                                 title="Collapse">
@@ -165,8 +165,12 @@
                                         </div>
                                     </div>
                                     <div class="card-body">
-                                        <img id="photo_preview" alt="Farmer Photo Preview" class="table-avatar"
-                                            src="{{ url('backend/dist/img/avatar5.png') }}" width="150px">
+                                        <a href="{{ url('kisaan.png') }}" data-toggle="lightbox" data-title="-"
+                                            data-gallery="gallery" style="display: inline-block;">
+
+                                            <img src="{{ url('kisaan.png') }}" class="img-fluid mb-2" width="150px"
+                                                id="photo_preview" alt="Farmer Photo Preview">
+                                        </a>
                                     </div>
                                 </div>
                                 <!-- /.card -->

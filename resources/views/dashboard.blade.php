@@ -273,7 +273,14 @@
                                                         alt="{{ $farmer->name }} ({{ $farmer->kisan_id }})">
                                                 </a>
                                             @else
-                                                <i class="fas fa-user fa-2x"></i>
+                                                <a href="{{ url('kisaan.png') }}" data-toggle="lightbox"
+                                                    data-title="{{ $farmer->name }}'s photo is not available."
+                                                    data-gallery="gallery" style="display: inline-block;">
+
+                                                    <img src="{{ url('kisaan.png') }}" class="img-fluid mb-2"
+                                                        width="50px" alt="-">
+                                                </a>
+                                                {{-- <i class="fas fa-user fa-2x"></i> --}}
                                             @endif
 
                                             <div>

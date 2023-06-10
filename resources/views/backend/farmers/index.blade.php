@@ -123,10 +123,13 @@
                                                                 width="50px" />
                                                         </a>
                                                     @else
-                                                        <div class="text-center">
-                                                            <i class="fas fa-user "
-                                                                title="{{ $farmer->name }} ({{ $farmer->kisan_id }})'s photo is not uploaded."></i>
-                                                        </div>
+                                                        <a href="{{ url('kisaan.png') }}" data-toggle="lightbox"
+                                                            data-title="{{ $farmer->name }}'s photo is not available."
+                                                            data-gallery="gallery" style="display: inline-block;">
+
+                                                            <img src="{{ url('kisaan.png') }}" class="img-fluid mb-2"
+                                                                width="50px" alt="-">
+                                                        </a>
                                                     @endif
                                                 </td>
                                                 <td>

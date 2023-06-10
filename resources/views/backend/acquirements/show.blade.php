@@ -212,7 +212,13 @@
                                                     style="display: block;margin-left: auto;margin-right: auto;width: 100%;" />
                                             </a>
                                         @else
-                                            Farmer photo is not available/uploaded.
+                                            <a href="{{ url('kisaan.png') }}" data-toggle="lightbox"
+                                                data-title="Farmer photo is not available/uploaded." data-gallery="gallery"
+                                                style="display: inline-block;">
+
+                                                <img src="{{ url('kisaan.png') }}" class="img-fluid mb-2" width="150px"
+                                                    id="photo_preview" alt="Farmer photo is not available/uploaded.">
+                                            </a>
                                         @endif
                                     </div>
                                     <!-- /.card-body -->
